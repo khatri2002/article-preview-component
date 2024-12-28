@@ -1,0 +1,119 @@
+// breakpoints for custom styles
+$md: 768px;
+$sm: 640px;
+
+.main {
+  @apply bg-light-grayish-blue font-manrope flex min-h-screen items-center justify-center;
+
+  .box {
+    @apply my-20 flex flex-col rounded-xl bg-white shadow-xl md:flex-row;
+    width: 46rem;
+    @media (width < $md) {
+      width: 90%;
+    }
+
+    .heroImage {
+      @apply rounded-tl-xl rounded-tr-xl object-cover object-left md:rounded-bl-xl md:rounded-tr-none;
+      width: 18rem;
+      height: 18rem;
+      @media (width < $md) {
+        width: 100%;
+      }
+      @media (width < $sm) {
+        height: 13rem;
+      }
+    }
+
+    .content {
+      @apply flex flex-col justify-between md:p-9;
+
+      .title {
+        @apply text-very-dark-grayish-blue mt-8 px-6 text-lg font-semibold sm:px-8 sm:text-xl md:mt-0 md:px-0;
+      }
+
+      .desc {
+        @apply text-desaturated-dark-blue mt-5 px-6 text-sm sm:mt-8 sm:px-8 md:mt-0 md:px-0;
+      }
+
+      .footer {
+        @apply relative mt-6 flex items-center justify-between px-6 py-4 sm:px-8 sm:py-6 md:static md:mt-0 md:px-0 md:py-0;
+
+        .author {
+          @apply flex items-center gap-x-3;
+
+          .authorImage {
+            @apply h-11 w-11 rounded-full;
+          }
+
+          .info {
+            @apply flex flex-col;
+
+            .name {
+              @apply text-very-dark-grayish-blue text-sm font-semibold;
+            }
+
+            .date {
+              @apply text-grayish-blue text-sm;
+            }
+          }
+        }
+
+        .share {
+          @apply md:relative;
+
+          .shareBtn {
+            @apply bg-light-grayish-blue flex h-8 w-8 items-center justify-center rounded-full transition duration-300 hover:border;
+
+            img {
+              @apply transition duration-300;
+            }
+          }
+
+          .shareActive {
+            @apply bg-very-dark-grayish-blue invisible absolute bottom-0 right-0 top-0 flex h-full w-full translate-y-5 items-center justify-between rounded-b-lg px-6 py-6 opacity-0 shadow-xl transition duration-300 sm:px-8 md:-top-20 md:bottom-auto md:h-auto md:w-auto md:min-w-60 md:rounded-t-lg md:px-0 md:py-4 lg:left-1/2 lg:right-auto lg:-translate-x-1/2;
+
+            .left {
+              @apply flex items-center justify-center gap-x-4 md:w-full;
+
+              .text {
+                @apply text-grayish-blue text-sm uppercase;
+                letter-spacing: 0.2rem;
+              }
+            }
+
+            .right {
+              @apply block md:hidden;
+
+              button {
+                @apply bg-grayish-blue flex h-8 w-8 items-center justify-center rounded-full;
+
+                img {
+                  filter: brightness(10000%);
+                }
+              }
+            }
+          }
+
+          .triangle {
+            @apply text-very-dark-grayish-blue invisible absolute -top-9 left-1/2 hidden -translate-x-1/2 translate-y-5 rotate-90 text-lg opacity-0 transition duration-300 md:block;
+          }
+
+          &.active {
+            .shareBtn {
+              @apply bg-very-dark-grayish-blue border;
+
+              img {
+                filter: brightness(10000%);
+              }
+            }
+
+            .shareActive,
+            .triangle {
+              @apply visible translate-y-0 opacity-100;
+            }
+          }
+        }
+      }
+    }
+  }
+}
